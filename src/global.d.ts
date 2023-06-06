@@ -1,4 +1,5 @@
-import { Collection } from "@discordjs/collection";
+import Storage from "@wumpjs/storage";
+
 
 declare module "kiwiemitter" {
   export class KiwiEmitter<Events extends EventMap> {
@@ -15,7 +16,7 @@ declare module "kiwiemitter" {
     /**
      * Events.
      */
-    public readonly events: Collection<string, EventObject[]>;
+    public readonly events: Storage<string, EventObject[]>;
 
     /**
      * Kiwi listener count.

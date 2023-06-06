@@ -1,4 +1,4 @@
-import { Collection } from "@discordjs/collection";
+import Storage from "@wumpjs/storage";
 import ms from "ms";
 import EventEmitter from "node:events";
 
@@ -36,16 +36,16 @@ export default class KiwiEmitter {
   };
 
   /**
-   * @type Collection<string, ((...args: any[]) => unknown)[]>
+   * @type Storage<string, ((...args: any[]) => unknown)[]>
    * @readonly
    */
-  events = new Collection();
+  events = new Storage();
 
   /**
-   * @type Collection<string, string>
+   * @type Storage<string, string>
    * @private
    */
-  timeouts = new Collection();
+  timeouts = new Storage();
   
   /**
    * Get listener count.

@@ -17,12 +17,11 @@
   "scripts": {
     "start": "node src/index"
   },
-
   "keywords": [],
   "author": "erqewee",
   "license": "MIT",
   "dependencies": {
-    "@discordjs/collection": "^1.5.1",
+    "@wumpjs/storage": "^2.0.3",
     "chalk": "^5.2.0",
     "ms": "^2.1.3"
   },

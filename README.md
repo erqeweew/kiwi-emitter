@@ -1,13 +1,13 @@
 # KiwiEmitter
 - Faster, Lightweight and Small advanced emitter.
 
-# Installation
+## Installation
 - We are recommend to use [`pnpm`](https://npmjs.com/pnpm).
 ```bash
 pnpm i kiwiemitter
 ```
 
-# Usage
+## Usage
 - We are supporting ESM only now.
 - Similar to `node:events`.
 ```js
@@ -18,3 +18,7 @@ emitter.on("event", (e) => console.log(e)); // welcome kiwi!
 
 emitter.emit("event", "welcome kiwi!");
 ```
+
+## Authors
+- [@erqeweew](https://github.com/erqeweew) (Developer)
+- [@davutozgursukuti4531](https://github.com/davutozgursukuti4531) (Developer, Contributor)

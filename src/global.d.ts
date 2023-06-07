@@ -2,7 +2,7 @@ import Storage from "@wumpjs/storage";
 
 
 declare module "kiwiemitter" {
-  export class KiwiEmitter<Events extends EventMap> {
+  export default class KiwiEmitter<Events extends EventMap> {
     /**
      * Create new Kiwi instance.
      */
@@ -16,7 +16,7 @@ declare module "kiwiemitter" {
     /**
      * Events.
      */
-    public readonly events: Storage<string, EventObject[]>;
+    public readonly events: Storage<EventObject[], string>;
 
     /**
      * Kiwi listener count.

@@ -62,7 +62,12 @@ declare module "kiwiemitter" {
     /**
      * Suspend listener.
      */
-    public supsendListener<Key extends keyof Events>(name: Key, time: string): void;
+    public suspendListener<Key extends keyof Events>(name: Key, time: string): void;
+
+    /**
+     * unSuspend listener.
+     */
+    public unsuspendListener<Key extends keyof Events>(name: Key): void;
   }
 
   export class KiwiEmitterError extends Error {

@@ -3,9 +3,7 @@
 
 # Update News
 
-- added CJS support(fully).
-- Optimized on ESM, CJS and TS
-- Time is now specified directly in milliseconds in the "suspendListener" function.
+- added unsuspendListener method.
 
 ## Installation
 - We are recommend to use [`pnpm`](https://npmjs.com/pnpm).

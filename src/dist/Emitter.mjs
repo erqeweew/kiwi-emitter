@@ -225,4 +225,15 @@ export default class KiwiEmitter {
 
     return void 0;
   };
+
+  unsuspendListener(name) {
+    if (typeof name !== "string") (new EmitterError(`'${name}' is not String.`, { name: "TypeError" })).throw();
+
+    if (!this.timeouts.has(name)) return;
+
+    this.timeouts.delete(name);
+
+    
+    return void 0;
+  };
 };

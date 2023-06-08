@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = void 0;
 var _storage = _interopRequireDefault(require("@wumpjs/storage"));
 var _nodeEvents = _interopRequireDefault(require("node:events"));
-var _EmitterError = _interopRequireDefault(require("./EmitterError.cjs"));
+var _EmitterError = _interopRequireDefault(require("./EmitterError.mjs"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 class KiwiEmitter {
   /**
@@ -39,7 +39,7 @@ class KiwiEmitter {
   };
 
   /**
-   * @type Storage<string, ((...args: any[]) => unknown)[]>
+   * @type Storage<((...args: any[]) => unknown)[], string>
    * @readonly
    */
   events = new _storage.default();
@@ -229,6 +229,14 @@ class KiwiEmitter {
     }).throw();
     this.timeouts.set(name, ms);
     setTimeout(() => this.timeouts.delete(name), time);
+    return void 0;
+  }
+  unsuspendListener(name) {
+    if (typeof name !== "string") new _EmitterError.default(`'${name}' is not String.`, {
+      name: "TypeError"
+    }).throw();
+    if (!this.timeouts.has(name)) return;
+    this.timeouts.delete(name);
     return void 0;
   }
 }

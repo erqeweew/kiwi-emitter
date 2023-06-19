@@ -1,8 +1,8 @@
 import Storage from "@wumpjs/storage";
 
 
-declare module "kiwiemitter" {
-  export default class KiwiEmitter<Events extends EventMap> {
+declare module "@smootie/emitter" {
+  export default class KiwiEmitter<Events extends InterfaceToType<EventMap> = EventMap> {
     /**
      * Create new Kiwi instance.
      */
@@ -100,6 +100,9 @@ declare module "kiwiemitter" {
 
   export interface EventMap {
     [key: string]: (...args: any[]) => unknown
+  }
+  export type InterfaceToType<L> = {
+    [key in keyof L]: L[key]
   }
 
   export type ResultTypes = "Deleted" | "NotDeleted";

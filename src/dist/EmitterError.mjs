@@ -1,4 +1,4 @@
-import colorette, { red } from "colorette";
+import { redBright, yellowBright } from "colorette";
 
 /**
  * @abstract
@@ -10,9 +10,12 @@ class DefaultError extends Error {
    * @param {{ name?: string, stack?: string }} options 
    */
   constructor(message, options) {
-    super(colorette.yellowBright(message));
-    
-    this.name = colorette.redBright(`KiwiError[${typeof options?.name === "string" ? options.name : "UnknownError"}]`);
+    super(yellowBright(message));
+    Object.defineProperty(this, "name", {
+      value: redBright(`KiwiError[${typeof options?.name === "string" ? options.name : "UnknownError"}]`),
+      configurable: false,
+      writable: false
+    })
 
     if (options?.stack) this.stack = options.stack;
   };

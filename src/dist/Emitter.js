@@ -1,7 +1,7 @@
 import Storage from "@wumpjs/storage"
 import EventEmitter from "node:events";
 
-import EmitterError from "./EmitterError.mjs";
+import EmitterError from "./EmitterError.js";
 
 export default class KiwiEmitter {
   /**
@@ -30,7 +30,7 @@ export default class KiwiEmitter {
   };
 
   #options = {
-    listenerCount: EventEmitter.defaultMaxListeners,
+    listenerLimit: EventEmitter.defaultMaxListeners,
     includeRejections: false
   };
 
@@ -60,6 +60,19 @@ export default class KiwiEmitter {
    */
   get listenerLimit() {
     return this.#options.listenerLimit;
+  };
+
+  /**
+   * Set limit of events.
+   * @param {number} limit 
+   * @returns {this}
+   */
+  setLimit(limit) {
+    if (typeof limit !== "number") (new EmitterError(`'${limit}' is not Number.`, { name: "TypeError" })).throw();
+
+    this.#options.listenerCount = limit;
+
+    return this;
   };
 
   /**
@@ -129,7 +142,8 @@ export default class KiwiEmitter {
 
     if (this.timeouts.has(name)) return null;
 
-    const events = this.events.get(name) ?? [];
+    let events = this.events.get(name) ?? [];
+    if (!Array.isArray(events)) events = [];
     for (const event of events) {
       if (!event?.name) break;
 

@@ -1,6 +1,6 @@
 {
   "name": "@smootie/emitter",
-  "version": "1.5.0",
+  "version": "1.5.1",
   "private": false,
   "publishConfig": {
     "access": "public"
@@ -23,14 +23,14 @@
   "author": "erqewee",
   "license": "MIT",
   "dependencies": {
-    "@wumpjs/storage": "^2.3.0",
+    "@wumpjs/storage": "^2.3.2",
     "colorette": "^2.0.20"
   },
   "devDependencies": {
-    "@babel/cli": "^7.21.5",
-    "@babel/core": "^7.22.1",
-    "@babel/plugin-transform-modules-commonjs": "^7.21.5",
-    "@types/node": "^20.2.5"
+    "@babel/cli": "^7.22.5",
+    "@babel/core": "^7.22.5",
+    "@babel/plugin-transform-modules-commonjs": "^7.22.5",
+    "@types/node": "^20.3.1"
   },
   "scripts": {
     "start": "node src/index"

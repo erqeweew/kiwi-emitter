@@ -1,4 +1,4 @@
-import { redBright, yellowBright } from "colorette";
+import Colorizer from "string-colorizer";
 
 /**
  * @abstract
@@ -10,14 +10,19 @@ class DefaultError extends Error {
    * @param {{ name?: string, stack?: string }} options 
    */
   constructor(message, options) {
-    super(yellowBright(message));
+    console.log()
+    const errorColorizer = new Colorizer()
+    super(errorColorizer.styles.bright(errorColorizer.foregroundColors.yellow(message)));
     Object.defineProperty(this, "name", {
-      value: redBright(`KiwiError[${typeof options?.name === "string" ? options.name : "UnknownError"}]`),
+      value: errorColorizer.styles.bright(errorColorizer.foregroundColors.red(`KiwiError[${typeof options?.name === "string" ? options.name : "UnknownError"}]`)),
       configurable: false,
       writable: false
     })
-
-    if (options?.stack) this.stack = options.stack;
+    Object.defineProperty(this, "stack", {
+      value: options?.stack ?? this.stack,
+      configurable: false,
+      writable: false
+    })
   };
 
   throw() {
@@ -25,8 +30,4 @@ class DefaultError extends Error {
   };
 };
 
-export default class EmitterError extends DefaultError {
-  constructor(message, options) {
-    super(message, options);
-  };
-};
+export default class EmitterError extends DefaultError {};

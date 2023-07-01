@@ -3,7 +3,7 @@
 
 # Update News
 
-- fixed some typing bugs.
+- more optimized.
 
 ## Installation
 - We are recommend to use [`pnpm`](https://npmjs.com/pnpm).

@@ -16,7 +16,7 @@ declare module "@smootie/emitter" {
     /**
      * Events.
      */
-    public readonly events: Storage<EventObject[], string>;
+    public readonly events: Storage<string, EventObject[]>;
 
     /**
      * Kiwi listener count.

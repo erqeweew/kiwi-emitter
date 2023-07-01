@@ -1,6 +1,6 @@
 {
   "name": "@smootie/emitter",
-  "version": "1.6.1",
+  "version": "1.6.2",
   "private": false,
   "publishConfig": {
     "access": "public"
@@ -8,7 +8,6 @@
   "description": "Faster, Lightweight, Type-Safe and Small advanced emitter.",
   "type": "module",
   "main": "./src/index.js",
-  "module": "./src/index.js",
   "types": "./src/global.d.ts",
   "repository": {
     "type": "git",
@@ -23,8 +22,8 @@
   "author": "erqewee",
   "license": "MIT",
   "dependencies": {
-    "@wumpjs/storage": "^2.3.2",
-    "colorette": "^2.0.20"
+    "@wumpjs/storage": "^2.3.3",
+    "string-colorizer": "^1.0.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.22.5",

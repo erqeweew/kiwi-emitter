@@ -5,7 +5,8 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports["default"] = void 0;
-var _colorette = require("colorette");
+var _stringColorizer = _interopRequireDefault(require("string-colorizer"));
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
@@ -33,15 +34,22 @@ var DefaultError = /*#__PURE__*/function (_Error) {
    * @param {{ name?: string, stack?: string }} options 
    */
   function DefaultError(message, options) {
+    var _options$stack;
     var _this;
     _classCallCheck(this, DefaultError);
-    _this = _super.call(this, (0, _colorette.yellowBright)(message));
+    console.log();
+    var errorColorizer = new _stringColorizer["default"]();
+    _this = _super.call(this, errorColorizer.styles.bright(errorColorizer.foregroundColors.yellow(message)));
     Object.defineProperty(_assertThisInitialized(_this), "name", {
-      value: (0, _colorette.redBright)("KiwiError[".concat(typeof (options === null || options === void 0 ? void 0 : options.name) === "string" ? options.name : "UnknownError", "]")),
+      value: errorColorizer.styles.bright(errorColorizer.foregroundColors.red("KiwiError[".concat(typeof (options === null || options === void 0 ? void 0 : options.name) === "string" ? options.name : "UnknownError", "]"))),
       configurable: false,
       writable: false
     });
-    if (options !== null && options !== void 0 && options.stack) _this.stack = options.stack;
+    Object.defineProperty(_assertThisInitialized(_this), "stack", {
+      value: (_options$stack = options === null || options === void 0 ? void 0 : options.stack) !== null && _options$stack !== void 0 ? _options$stack : _this.stack,
+      configurable: false,
+      writable: false
+    });
     return _this;
   }
   _createClass(DefaultError, [{
@@ -56,9 +64,9 @@ var DefaultError = /*#__PURE__*/function (_Error) {
 var EmitterError = /*#__PURE__*/function (_DefaultError) {
   _inherits(EmitterError, _DefaultError);
   var _super2 = _createSuper(EmitterError);
-  function EmitterError(message, options) {
+  function EmitterError() {
     _classCallCheck(this, EmitterError);
-    return _super2.call(this, message, options);
+    return _super2.apply(this, arguments);
   }
   return _createClass(EmitterError);
 }(DefaultError);

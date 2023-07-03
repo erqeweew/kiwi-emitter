@@ -1,6 +1,6 @@
 {
   "name": "@smootie/emitter",
-  "version": "1.6.2",
+  "version": "1.6.4",
   "private": false,
   "publishConfig": {
     "access": "public"
@@ -16,14 +16,14 @@
   "exports": {
     "types": "./src/global.d.ts",
     "import": "./src/index.js",
-    "require": "./build/index.js"
+    "require": "./build/index.cjs"
   },
   "keywords": [],
   "author": "erqewee",
   "license": "MIT",
   "dependencies": {
-    "@wumpjs/storage": "^2.3.3",
-    "string-colorizer": "^1.0.1"
+    "@wumpjs/storage": "^2.3.4",
+    "string-colorizer": "^1.0.2"
   },
   "devDependencies": {
     "@babel/cli": "^7.22.5",

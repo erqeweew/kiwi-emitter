@@ -1,3 +1,5 @@
+# NO LONGER MAINTAINED
+
 # KiwiEmitter
 - Faster, Lightweight, Type-Safe and Small advanced emitter.
 
